@@ -194,104 +194,116 @@ class PortfolioController extends Controller
             ->with('success', 'Portfolio deleted successfully!');
     }
 
-    private function validatePortfolio(
-        Request $request,
-        bool $updating = false
-    ): array {
-        $currentYear = (int) date('Y');
+    
+private function validatePortfolio(
+    Request $request,
+    bool $updating = false
+): array {
+    $currentYear = (int) date('Y');
 
-        $rules = [
-            'full_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
-            'phone' => ['nullable', 'string', 'max:30'],
-            'address' => ['nullable', 'string', 'max:255'],
-            'about' => ['required', 'string'],
-            'template' => [
-                'required',
-                Rule::in(Portfolio::TEMPLATES),
-            ],
-            'profile_picture' => [
-                'nullable',
-                'image',
-                'mimes:jpg,jpeg,png,webp',
-                'max:2048',
-            ],
+    $rules = [
+        'full_name' => [
+            'required',
+            'string',
+            'max:255',
+            "regex:/^[\p{L}\p{M}\s'’.-]+$/u",
+        ],
+        'email' => ['required', 'email', 'max:255'],
+        'phone' => [
+            'nullable',
+            'string',
+            'max:30',
+            'regex:/^[0-9+().\s-]+$/',
+        ],
+        'address' => ['nullable', 'string', 'max:255'],
+        'about' => ['required', 'string'],
+        'template' => [
+            'required',
+            Rule::in(Portfolio::TEMPLATES),
+        ],
+        'profile_picture' => [
+            'nullable',
+            'image',
+            'mimes:jpg,jpeg,png,webp',
+            'max:2048',
+        ],
 
-            'educations' => ['sometimes', 'array', 'max:20'],
-            'educations.*.school' => [
-                'required', 'string', 'max:255',
-            ],
-            'educations.*.degree' => [
-                'required', 'string', 'max:255',
-            ],
-            'educations.*.start_year' => [
-                'nullable', 'integer', 'min:1900',
-                'max:' . ($currentYear + 10),
-            ],
-            'educations.*.end_year' => [
-                'nullable', 'integer', 'min:1900',
-                'max:' . ($currentYear + 10),
-            ],
-            'educations.*.is_present' => [
-                'sometimes', 'boolean',
-            ],
+        'educations' => ['sometimes', 'array', 'max:20'],
+        'educations.*.school' => [
+            'required', 'string', 'max:255',
+        ],
+        'educations.*.degree' => [
+            'required', 'string', 'max:255',
+        ],
+        'educations.*.start_year' => [
+            'nullable', 'integer', 'min:1900',
+            'max:' . ($currentYear + 10),
+        ],
+        'educations.*.end_year' => [
+            'nullable', 'integer', 'min:1900',
+            'max:' . ($currentYear + 10),
+        ],
+        'educations.*.is_present' => [
+            'sometimes', 'boolean',
+        ],
 
-            'skills' => ['sometimes', 'array', 'max:50'],
-            'skills.*.name' => [
-                'required', 'string', 'max:255',
-            ],
+        'skills' => ['sometimes', 'array', 'max:50'],
+        'skills.*.name' => [
+            'required', 'string', 'max:255',
+        ],
 
-            'projects' => ['sometimes', 'array', 'max:50'],
-            'projects.*.title' => [
-                'required', 'string', 'max:255',
-            ],
-            'projects.*.description' => [
-                'nullable', 'string',
-            ],
-            'projects.*.technologies' => [
-                'nullable', 'string', 'max:2000',
-            ],
-            'projects.*.link' => [
-                'nullable', 'url', 'max:2048',
-            ],
+        'projects' => ['sometimes', 'array', 'max:50'],
+        'projects.*.title' => [
+            'required', 'string', 'max:255',
+        ],
+        'projects.*.description' => [
+            'nullable', 'string',
+        ],
+        'projects.*.technologies' => [
+            'nullable', 'string', 'max:2000',
+        ],
+        'projects.*.link' => [
+            'nullable', 'url', 'max:2048',
+        ],
 
-            'experiences' => ['sometimes', 'array', 'max:30'],
-            'experiences.*.job_title' => [
-                'required', 'string', 'max:255',
-            ],
-            'experiences.*.company' => [
-                'required', 'string', 'max:255',
-            ],
-            'experiences.*.start_date' => [
-                'nullable', 'date',
-            ],
-            'experiences.*.end_date' => [
-                'nullable', 'date',
-            ],
-            'experiences.*.is_current' => [
-                'sometimes', 'boolean',
-            ],
-            'experiences.*.description' => [
-                'nullable', 'string',
-            ],
+        'experiences' => ['sometimes', 'array', 'max:30'],
+        'experiences.*.job_title' => [
+            'required', 'string', 'max:255',
+        ],
+        'experiences.*.company' => [
+            'required', 'string', 'max:255',
+        ],
+        'experiences.*.start_date' => [
+            'nullable', 'date',
+        ],
+        'experiences.*.end_date' => [
+            'nullable', 'date',
+        ],
+        'experiences.*.is_current' => [
+            'sometimes', 'boolean',
+        ],
+        'experiences.*.description' => [
+            'nullable', 'string',
+        ],
 
-            'social_links' => ['sometimes', 'array', 'max:30'],
-            'social_links.*.platform' => [
-                'required', 'string', 'max:255',
-            ],
-            'social_links.*.url' => [
-                'required', 'url', 'max:2048',
-            ],
+        'social_links' => ['sometimes', 'array', 'max:30'],
+        'social_links.*.platform' => [
+            'required', 'string', 'max:255',
+        ],
+        'social_links.*.url' => [
+            'required', 'url', 'max:2048',
+        ],
+    ];
+
+    if ($updating) {
+        $rules['is_published'] = [
+            'required', 'boolean',
         ];
-
-        if ($updating) {
-            $rules['is_published'] = [
-                'required', 'boolean',
-            ];
-        }
-
-        return $request->validate($rules);
     }
+
+    return $request->validate($rules);
+}
+
 
     private function extractSections(array &$data): array
     {

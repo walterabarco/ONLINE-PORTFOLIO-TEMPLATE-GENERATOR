@@ -553,9 +553,7 @@
             <span>Portfolio Builder</span>
         </a>
 
-        <a class="top-link" href="{{ route('login') }}">
-            Back to Login
-        </a>
+        
     </header>
 
     <main class="page">
@@ -659,12 +657,12 @@
                         </div>
 
                         <button class="submit-button" type="submit">
-                            Send Reset Link <span aria-hidden="true">→</span>
+                            Send Reset Link 
                         </button>
                     </form>
 
                     <a class="back-link" href="{{ route('login') }}">
-                        ← Back to Login
+                         Back to Login
                     </a>
                 </div>
             </section>

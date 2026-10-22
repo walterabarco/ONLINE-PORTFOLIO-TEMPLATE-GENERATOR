@@ -26,7 +26,9 @@
             padding: 0;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             min-height: 100vh;
@@ -38,10 +40,19 @@
             line-height: 1.6;
         }
 
-        a { color: inherit; text-decoration: none; }
-        button, input, textarea { font: inherit; }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button, input, textarea {
+            font: inherit;
+        }
 
         .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             min-height: 76px;
             padding: 14px 6%;
             display: flex;
@@ -50,6 +61,7 @@
             gap: 20px;
             background: var(--white);
             border-bottom: 1px solid var(--border);
+            box-shadow: 0 4px 16px rgba(7, 86, 91, 0.06);
         }
 
         .brand {
@@ -86,14 +98,18 @@
             transition: .2s;
         }
 
-        .back-link:hover { background: var(--soft-mint); }
+        .back-link:hover {
+            background: var(--soft-mint);
+        }
 
         .page {
             width: min(1180px, calc(100% - 40px));
             margin: 40px auto 55px;
         }
 
-        .page-heading { margin-bottom: 28px; }
+        .page-heading {
+            margin-bottom: 28px;
+        }
 
         .eyebrow {
             display: inline-flex;
@@ -123,7 +139,9 @@
             font-weight: 900;
         }
 
-        .page-heading h1 span { color: var(--teal); }
+        .page-heading h1 span {
+            color: var(--teal);
+        }
 
         .page-heading p {
             max-width: 700px;
@@ -141,14 +159,17 @@
 
         .side-card {
             position: sticky;
-            top: 20px;
+            top: 96px;
             padding: 23px 19px;
             border: 1px solid var(--border);
             border-radius: 16px;
             background: var(--white);
         }
 
-        .side-card h2 { font-size: 16px; font-weight: 850; }
+        .side-card h2 {
+            font-size: 16px;
+            font-weight: 850;
+        }
 
         .side-card > p {
             margin-top: 6px;
@@ -192,7 +213,10 @@
             font-weight: 850;
         }
 
-        .side-step strong { display: block; font-size: 13px; }
+        .side-step strong {
+            display: block;
+            font-size: 13px;
+        }
 
         .side-step small {
             display: block;
@@ -222,10 +246,14 @@
 
         .card-topline {
             height: 5px;
-            background: linear-gradient(90deg, var(--deep-teal), var(--teal), #8acdc7);
+            background: linear-gradient(
+                90deg, var(--deep-teal), var(--teal), #8acdc7
+            );
         }
 
-        .form-content { padding: 34px; }
+        .form-content {
+            padding: 34px;
+        }
 
         .section-heading {
             display: flex;
@@ -262,9 +290,18 @@
             gap: 21px 20px;
         }
 
-        .form-group { min-width: 0; margin-bottom: 21px; }
-        .form-grid .form-group { margin-bottom: 0; }
-        .full-width { grid-column: 1 / -1; }
+        .form-group {
+            min-width: 0;
+            margin-bottom: 21px;
+        }
+
+        .form-grid .form-group {
+            margin-bottom: 0;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
 
         .field-label {
             display: block;
@@ -274,13 +311,17 @@
             font-weight: 800;
         }
 
-        .required { color: var(--teal); }
+        .required {
+            color: var(--teal);
+        }
 
         input[type="text"],
         input[type="email"],
+        input[type="tel"],
         input[type="number"],
         input[type="date"],
         input[type="file"],
+        input[type="url"],
         textarea {
             display: block;
             width: 100%;
@@ -295,15 +336,23 @@
             transition: border-color .2s, box-shadow .2s;
         }
 
-        input::placeholder, textarea::placeholder { color: #899d9c; }
+        input::placeholder,
+        textarea::placeholder {
+            color: #899d9c;
+        }
 
-        input:focus, textarea:focus {
+        input:focus,
+        textarea:focus {
             border-color: var(--teal);
             box-shadow: 0 0 0 4px rgba(7, 133, 141, .11);
         }
 
-        input[aria-invalid="true"], textarea[aria-invalid="true"] {
-            border-color: var(--danger);
+        input[aria-invalid="true"],
+        textarea[aria-invalid="true"],
+        select[aria-invalid="true"],
+        .is-invalid {
+            border-color: var(--danger) !important;
+            box-shadow: 0 0 0 3px rgba(180, 35, 50, .10);
         }
 
         textarea {
@@ -335,8 +384,14 @@
             font-size: 14px;
         }
 
-        .error-summary strong { display: block; margin-bottom: 6px; }
-        .error-summary ul { padding-left: 22px; }
+        .error-summary strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .error-summary ul {
+            padding-left: 22px;
+        }
 
         .divider {
             height: 1px;
@@ -351,7 +406,9 @@
             background: #f8fbfa;
         }
 
-        input[type="file"] { padding: 8px; }
+        input[type="file"] {
+            padding: 8px;
+        }
 
         input[type="file"]::file-selector-button {
             margin-right: 12px;
@@ -372,8 +429,13 @@
             background: #fbfdfc;
         }
 
-        .repeat-item .form-grid { margin-bottom: 18px; }
-        .repeat-item .form-group { margin-bottom: 0; }
+        .repeat-item .form-grid {
+            margin-bottom: 18px;
+        }
+
+        .repeat-item .form-group {
+            margin-bottom: 0;
+        }
 
         .check-label {
             display: inline-flex;
@@ -396,7 +458,10 @@
             gap: 16px;
         }
 
-        .template-option { position: relative; min-width: 0; }
+        .template-option {
+            position: relative;
+            min-width: 0;
+        }
 
         .template-option input {
             position: absolute;
@@ -418,7 +483,9 @@
             transition: border-color .2s, background .2s, box-shadow .2s;
         }
 
-        .template-card:hover { border-color: #80c2bd; }
+        .template-card:hover {
+            border-color: #80c2bd;
+        }
 
         .template-option input:checked + .template-card {
             border-color: var(--teal);
@@ -474,7 +541,10 @@
             font-weight: 800;
         }
 
-        .preview-nav span:last-child { color: var(--muted); font-weight: 600; }
+        .preview-nav span:last-child {
+            color: var(--muted);
+            font-weight: 600;
+        }
 
         .preview-avatar {
             width: 34px;
@@ -495,7 +565,10 @@
             overflow-wrap: anywhere;
         }
 
-        .preview-caption { color: var(--muted); font-size: 7px; }
+        .preview-caption {
+            color: var(--muted);
+            font-size: 7px;
+        }
 
         .preview-line {
             height: 4px;
@@ -505,7 +578,9 @@
             background: #dce9e8;
         }
 
-        .preview-line.short { width: 60%; }
+        .preview-line.short {
+            width: 60%;
+        }
 
         .preview-projects {
             display: grid;
@@ -514,64 +589,108 @@
             margin-top: 13px;
         }
 
-        .preview-projects span { height: 27px; border-radius: 4px; }
+        .preview-projects span {
+            height: 27px;
+            border-radius: 4px;
+        }
 
-        .preview-simple { color: #263b3c; background: #f7fafa; }
+        .preview-simple {
+            color: #263b3c;
+            background: #f7fafa;
+        }
+
         .preview-simple .preview-nav {
             color: var(--deep-teal);
             border-bottom: 1px solid #dce9e8;
             padding-bottom: 6px;
         }
-        .preview-simple .simple-profile { text-align: center; }
+
+        .preview-simple .simple-profile {
+            text-align: center;
+        }
+
         .preview-simple .preview-avatar {
             margin: 0 auto 7px;
             border-radius: 50%;
             background: var(--soft-mint);
             color: var(--teal);
         }
-        .preview-simple .preview-title { color: var(--deep-teal); }
-        .preview-simple .preview-line { margin-left: auto; margin-right: auto; }
+
+        .preview-simple .preview-title {
+            color: var(--deep-teal);
+        }
+
+        .preview-simple .preview-line {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .preview-simple .preview-projects span {
             border: 1px solid var(--border);
             background: var(--white);
         }
 
-        .preview-modern { color: #f4fafa; background: #09141c; }
+        .preview-modern {
+            color: #f4fafa;
+            background: #09141c;
+        }
+
         .preview-modern .preview-browser {
             background: #101f29;
             border-color: #263b43;
         }
+
         .preview-modern .preview-nav {
             color: #51dccb;
             border-bottom: 1px solid #263b43;
             padding-bottom: 6px;
         }
+
         .preview-modern .modern-profile {
             display: flex;
             align-items: center;
             gap: 8px;
         }
+
         .preview-modern .preview-avatar {
             border: 1px solid #51dccb;
             background: #162b36;
             color: #51dccb;
         }
-        .preview-modern .preview-title { color: var(--white); }
-        .preview-modern .preview-caption { color: #a6bac1; }
-        .preview-modern .preview-line { background: #354c56; }
+
+        .preview-modern .preview-title {
+            color: var(--white);
+        }
+
+        .preview-modern .preview-caption {
+            color: #a6bac1;
+        }
+
+        .preview-modern .preview-line {
+            background: #354c56;
+        }
+
         .preview-modern .preview-projects span {
             border: 1px solid #294752;
             background: #162b36;
         }
 
-        .preview-creative { color: #153536; background: #f8f8f2; }
-        .preview-creative .preview-nav { color: var(--deep-teal); }
+        .preview-creative {
+            color: #153536;
+            background: #f8f8f2;
+        }
+
+        .preview-creative .preview-nav {
+            color: var(--deep-teal);
+        }
+
         .preview-creative .creative-profile {
             display: grid;
             grid-template-columns: 1fr 44px;
             align-items: center;
             gap: 5px;
         }
+
         .preview-creative .preview-avatar {
             width: 34px;
             height: 43px;
@@ -581,11 +700,27 @@
             color: var(--white);
             transform: rotate(3deg);
         }
-        .preview-creative .preview-title { font-size: 12px; color: var(--deep-teal); }
-        .preview-creative .preview-line { background: #cde7e3; }
-        .preview-creative .preview-projects span:nth-child(1) { background: #d9f078; }
-        .preview-creative .preview-projects span:nth-child(2) { background: var(--soft-mint); }
-        .preview-creative .preview-projects span:nth-child(3) { background: #b9e1dc; }
+
+        .preview-creative .preview-title {
+            font-size: 12px;
+            color: var(--deep-teal);
+        }
+
+        .preview-creative .preview-line {
+            background: #cde7e3;
+        }
+
+        .preview-creative .preview-projects span:nth-child(1) {
+            background: #d9f078;
+        }
+
+        .preview-creative .preview-projects span:nth-child(2) {
+            background: var(--soft-mint);
+        }
+
+        .preview-creative .preview-projects span:nth-child(3) {
+            background: #b9e1dc;
+        }
 
         .template-name {
             padding: 13px 5px 3px;
@@ -651,9 +786,13 @@
             color: var(--deep-teal);
         }
 
-        .button-secondary:hover { background: var(--soft-mint); }
+        .button-secondary:hover {
+            background: var(--soft-mint);
+        }
 
-        .remove-item { color: var(--danger); }
+        .remove-item {
+            color: var(--danger);
+        }
 
         .footer {
             padding: 0 20px 24px;
@@ -663,46 +802,142 @@
         }
 
         @media (max-width: 900px) {
-            .editor-layout { grid-template-columns: 1fr; }
-            .side-card { position: static; }
-            .side-card > p, .progress-track, .side-note { display: none; }
+            .editor-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .side-card {
+                position: static;
+            }
+
+            .side-card > p,
+            .progress-track,
+            .side-note {
+                display: none;
+            }
+
             .side-steps {
                 display: grid;
                 grid-template-columns: repeat(3, minmax(0, 1fr));
                 gap: 13px;
             }
-            .side-step { margin-top: 17px; }
+
+            .side-step {
+                margin-top: 17px;
+            }
         }
 
         @media (max-width: 700px) {
-            .templates { grid-template-columns: 1fr; }
-            .preview-window { height: 205px; }
-            .preview-body { padding: 15px; }
-            .preview-title { font-size: 15px; }
-            .template-name { font-size: 17px; }
-            .template-description { font-size: 13px; }
+            .templates {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-window {
+                height: 205px;
+            }
+
+            .preview-body {
+                padding: 15px;
+            }
+
+            .preview-title {
+                font-size: 15px;
+            }
+
+            .template-name {
+                font-size: 17px;
+            }
+
+            .template-description {
+                font-size: 13px;
+            }
         }
 
         @media (max-width: 620px) {
-            .navbar { min-height: 68px; padding: 12px 18px; }
-            .brand { gap: 8px; font-size: 16px; }
-            .brand-mark { width: 37px; height: 37px; font-size: 19px; }
-            .back-link { padding: 9px 11px; font-size: 12px; }
-            .page { width: calc(100% - 28px); margin: 27px auto 35px; }
-            .page-heading { margin-bottom: 22px; }
-            .page-heading h1 { font-size: 33px; }
-            .page-heading p { font-size: 14px; }
-            .side-card { padding: 17px; }
-            .side-steps { grid-template-columns: 1fr; gap: 0; }
-            .side-step { margin-top: 13px; }
-            .form-content { padding: 24px 20px; }
-            .section-heading { font-size: 19px; }
-            .section-description { margin-left: 0; font-size: 13px; }
-            .form-grid { grid-template-columns: 1fr; gap: 18px; }
-            .full-width { grid-column: auto; }
-            .repeat-item { padding: 15px; }
-            .buttons { flex-direction: column-reverse; }
-            .button { width: 100%; }
+            .navbar {
+                min-height: 68px;
+                padding: 12px 18px;
+            }
+
+            .brand {
+                gap: 8px;
+                font-size: 16px;
+            }
+
+            .brand-mark {
+                width: 37px;
+                height: 37px;
+                font-size: 19px;
+            }
+
+            .back-link {
+                padding: 9px 11px;
+                font-size: 12px;
+            }
+
+            .page {
+                width: calc(100% - 28px);
+                margin: 27px auto 35px;
+            }
+
+            .page-heading {
+                margin-bottom: 22px;
+            }
+
+            .page-heading h1 {
+                font-size: 33px;
+            }
+
+            .page-heading p {
+                font-size: 14px;
+            }
+
+            .side-card {
+                padding: 17px;
+            }
+
+            .side-steps {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .side-step {
+                margin-top: 13px;
+            }
+
+            .form-content {
+                padding: 24px 20px;
+            }
+
+            .section-heading {
+                font-size: 19px;
+            }
+
+            .section-description {
+                margin-left: 0;
+                font-size: 13px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .full-width {
+                grid-column: auto;
+            }
+
+            .repeat-item {
+                padding: 15px;
+            }
+
+            .buttons {
+                flex-direction: column-reverse;
+            }
+
+            .button {
+                width: 100%;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -786,9 +1021,17 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label class="field-label" for="full_name">Full Name <span class="required">*</span></label>
-                            <input type="text" id="full_name" name="full_name"
-                                   value="{{ old('full_name', auth()->user()->name) }}"
-                                   maxlength="255" autocomplete="name" required>
+                            <input
+                                type="text"
+                                id="full_name"
+                                name="full_name"
+                                value="{{ old('full_name', auth()->user()->name) }}"
+                                maxlength="255"
+                                autocomplete="name"
+                                pattern="[A-Za-zÀ-ÖØ-öø-ÿĀ-ž .'-]+"
+                                title="Please enter a name using letters only."
+                                required
+                            >
                             @error('full_name') <div class="error">{{ $message }}</div> @enderror
                         </div>
 
@@ -802,9 +1045,18 @@
 
                         <div class="form-group">
                             <label class="field-label" for="phone">Phone Number</label>
-                            <input type="text" id="phone" name="phone"
-                                   value="{{ old('phone') }}" maxlength="30"
-                                   autocomplete="tel" placeholder="e.g. 09XX XXX XXXX">
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                value="{{ old('phone') }}"
+                                maxlength="30"
+                                autocomplete="tel"
+                                inputmode="tel"
+                                pattern="[0-9+(). -]*"
+                                title="Use numbers and common phone separators only."
+                                placeholder="e.g. 09XX XXX XXXX"
+                            >
                             @error('phone') <div class="error">{{ $message }}</div> @enderror
                         </div>
 
@@ -843,41 +1095,9 @@
 
                     {{-- EDUCATION --}}
                     <h2 class="section-heading"><span class="section-icon">03</span> Education</h2>
-                    <p class="section-description">Add your school, course, and years of study.</p>
+                    <p class="section-description">Add your school, course, and years of study. This section is optional.</p>
 
-                    <div id="education-list">
-                        <div class="repeat-item" data-item>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label class="field-label">School / University</label>
-                                    <input type="text" name="educations[0][school]" maxlength="255"
-                                           placeholder="School name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="field-label">Degree / Course</label>
-                                    <input type="text" name="educations[0][degree]" maxlength="255"
-                                           placeholder="e.g. BS Information Technology">
-                                </div>
-                                <div class="form-group">
-                                    <label class="field-label">Start Year</label>
-                                    <input type="number" name="educations[0][start_year]"
-                                           min="1900" max="2100" placeholder="2024">
-                                </div>
-                                <div class="form-group">
-                                    <label class="field-label">End Year</label>
-                                    <input type="number" name="educations[0][end_year]"
-                                           min="1900" max="2100" placeholder="2028">
-                                </div>
-                                <div class="form-group full-width">
-                                    <label class="check-label">
-                                        <input type="checkbox" name="educations[0][is_present]" value="1">
-                                        I am currently studying here
-                                    </label>
-                                </div>
-                            </div>
-                            <button type="button" class="button button-secondary remove-item">Remove education</button>
-                        </div>
-                    </div>
+                    <div id="education-list"></div>
                     <button type="button" class="button button-secondary add-item"
                             data-target="education-list" data-template="education-template">+ Add Education</button>
 
@@ -886,20 +1106,28 @@
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label class="field-label">School / University</label>
-                                    <input type="text" name="educations[__INDEX__][school]" maxlength="255" placeholder="School name">
+                                    <input type="text" name="educations[__INDEX__][school]"
+                                           maxlength="255" placeholder="School name">
                                 </div>
+
                                 <div class="form-group">
                                     <label class="field-label">Degree / Course</label>
-                                    <input type="text" name="educations[__INDEX__][degree]" maxlength="255" placeholder="Degree or course">
+                                    <input type="text" name="educations[__INDEX__][degree]"
+                                           maxlength="255" placeholder="e.g. BS Information Technology">
                                 </div>
+
                                 <div class="form-group">
                                     <label class="field-label">Start Year</label>
-                                    <input type="number" name="educations[__INDEX__][start_year]" min="1900" max="2100">
+                                    <input type="number" name="educations[__INDEX__][start_year]"
+                                           min="1900" max="2100" placeholder="2024">
                                 </div>
+
                                 <div class="form-group">
                                     <label class="field-label">End Year</label>
-                                    <input type="number" name="educations[__INDEX__][end_year]" min="1900" max="2100">
+                                    <input type="number" name="educations[__INDEX__][end_year]"
+                                           min="1900" max="2100" placeholder="2028">
                                 </div>
+
                                 <div class="form-group full-width">
                                     <label class="check-label">
                                         <input type="checkbox" name="educations[__INDEX__][is_present]" value="1">
@@ -907,6 +1135,7 @@
                                     </label>
                                 </div>
                             </div>
+
                             <button type="button" class="button button-secondary remove-item">Remove education</button>
                         </div>
                     </template>
@@ -915,18 +1144,9 @@
 
                     {{-- SKILLS --}}
                     <h2 class="section-heading"><span class="section-icon">04</span> Skills</h2>
-                    <p class="section-description">List your technical skills, tools, and areas of expertise.</p>
+                    <p class="section-description">List your technical skills, tools, and areas of expertise. This section is optional.</p>
 
-                    <div id="skills-list">
-                        <div class="repeat-item" data-item>
-                            <div class="form-group">
-                                <label class="field-label">Skill Name</label>
-                                <input type="text" name="skills[0][name]" maxlength="255"
-                                       placeholder="e.g. HTML, CSS, PHP, Laravel">
-                            </div>
-                            <button type="button" class="button button-secondary remove-item">Remove skill</button>
-                        </div>
-                    </div>
+                    <div id="skills-list"></div>
                     <button type="button" class="button button-secondary add-item"
                             data-target="skills-list" data-template="skill-template">+ Add Skill</button>
 
@@ -934,7 +1154,8 @@
                         <div class="repeat-item" data-item>
                             <div class="form-group">
                                 <label class="field-label">Skill Name</label>
-                                <input type="text" name="skills[__INDEX__][name]" maxlength="255" placeholder="Enter a skill">
+                                <input type="text" name="skills[__INDEX__][name]"
+                                       maxlength="255" placeholder="e.g. HTML, CSS, PHP, Laravel">
                             </div>
                             <button type="button" class="button button-secondary remove-item">Remove skill</button>
                         </div>
@@ -944,33 +1165,9 @@
 
                     {{-- PROJECTS --}}
                     <h2 class="section-heading"><span class="section-icon">05</span> Projects</h2>
-                    <p class="section-description">Showcase your school projects, applications, and other work.</p>
+                    <p class="section-description">Showcase your school projects, applications, and other work. This section is optional.</p>
 
-                    <div id="projects-list">
-                        <div class="repeat-item" data-item>
-                            <div class="form-grid">
-                                <div class="form-group full-width">
-                                    <label class="field-label">Project Title</label>
-                                    <input type="text" name="projects[0][title]" maxlength="255" placeholder="Project title">
-                                </div>
-                                <div class="form-group full-width">
-                                    <label class="field-label">Description</label>
-                                    <textarea name="projects[0][description]" placeholder="What does your project do?"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label class="field-label">Technologies Used</label>
-                                    <input type="text" name="projects[0][technologies]" maxlength="255"
-                                           placeholder="e.g. Laravel, PHP, PostgreSQL">
-                                </div>
-                                <div class="form-group">
-                                    <label class="field-label">Project URL</label>
-                                    <input type="text" name="projects[0][link]" maxlength="255"
-                                           placeholder="https://example.com">
-                                </div>
-                            </div>
-                            <button type="button" class="button button-secondary remove-item">Remove project</button>
-                        </div>
-                    </div>
+                    <div id="projects-list"></div>
                     <button type="button" class="button button-secondary add-item"
                             data-target="projects-list" data-template="project-template">+ Add Project</button>
 
@@ -979,21 +1176,29 @@
                             <div class="form-grid">
                                 <div class="form-group full-width">
                                     <label class="field-label">Project Title</label>
-                                    <input type="text" name="projects[__INDEX__][title]" maxlength="255" placeholder="Project title">
+                                    <input type="text" name="projects[__INDEX__][title]"
+                                           maxlength="255" placeholder="Project title">
                                 </div>
+
                                 <div class="form-group full-width">
                                     <label class="field-label">Description</label>
-                                    <textarea name="projects[__INDEX__][description]" placeholder="Describe your project"></textarea>
+                                    <textarea name="projects[__INDEX__][description]"
+                                              placeholder="What does your project do?"></textarea>
                                 </div>
+
                                 <div class="form-group">
                                     <label class="field-label">Technologies Used</label>
-                                    <input type="text" name="projects[__INDEX__][technologies]" maxlength="255" placeholder="Technologies">
+                                    <input type="text" name="projects[__INDEX__][technologies]"
+                                           maxlength="2000" placeholder="e.g. Laravel, PHP, PostgreSQL">
                                 </div>
+
                                 <div class="form-group">
                                     <label class="field-label">Project URL</label>
-                                    <input type="text" name="projects[__INDEX__][link]" maxlength="255" placeholder="https://example.com">
+                                    <input type="url" name="projects[__INDEX__][link]"
+                                           maxlength="2048" placeholder="https://example.com">
                                 </div>
                             </div>
+
                             <button type="button" class="button button-secondary remove-item">Remove project</button>
                         </div>
                     </template>
@@ -1002,41 +1207,9 @@
 
                     {{-- WORK EXPERIENCE --}}
                     <h2 class="section-heading"><span class="section-icon">06</span> Work Experience</h2>
-                    <p class="section-description">Add previous jobs, internships, or relevant experience.</p>
+                    <p class="section-description">Add previous jobs, internships, or relevant experience. This section is optional.</p>
 
-                    <div id="experiences-list">
-                        <div class="repeat-item" data-item>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label class="field-label">Job Title</label>
-                                    <input type="text" name="experiences[0][job_title]" maxlength="255" placeholder="e.g. Web Developer Intern">
-                                </div>
-                                <div class="form-group">
-                                    <label class="field-label">Company</label>
-                                    <input type="text" name="experiences[0][company]" maxlength="255" placeholder="Company name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="field-label">Start Date</label>
-                                    <input type="date" name="experiences[0][start_date]">
-                                </div>
-                                <div class="form-group">
-                                    <label class="field-label">End Date</label>
-                                    <input type="date" name="experiences[0][end_date]">
-                                </div>
-                                <div class="form-group full-width">
-                                    <label class="check-label">
-                                        <input type="checkbox" name="experiences[0][is_current]" value="1">
-                                        I currently work here
-                                    </label>
-                                </div>
-                                <div class="form-group full-width">
-                                    <label class="field-label">Description</label>
-                                    <textarea name="experiences[0][description]" placeholder="Describe your responsibilities and achievements"></textarea>
-                                </div>
-                            </div>
-                            <button type="button" class="button button-secondary remove-item">Remove experience</button>
-                        </div>
-                    </div>
+                    <div id="experiences-list"></div>
                     <button type="button" class="button button-secondary add-item"
                             data-target="experiences-list" data-template="experience-template">+ Add Work Experience</button>
 
@@ -1045,31 +1218,40 @@
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label class="field-label">Job Title</label>
-                                    <input type="text" name="experiences[__INDEX__][job_title]" maxlength="255" placeholder="Job title">
+                                    <input type="text" name="experiences[__INDEX__][job_title]"
+                                           maxlength="255" placeholder="e.g. Web Developer Intern">
                                 </div>
+
                                 <div class="form-group">
                                     <label class="field-label">Company</label>
-                                    <input type="text" name="experiences[__INDEX__][company]" maxlength="255" placeholder="Company name">
+                                    <input type="text" name="experiences[__INDEX__][company]"
+                                           maxlength="255" placeholder="Company name">
                                 </div>
+
                                 <div class="form-group">
                                     <label class="field-label">Start Date</label>
                                     <input type="date" name="experiences[__INDEX__][start_date]">
                                 </div>
+
                                 <div class="form-group">
                                     <label class="field-label">End Date</label>
                                     <input type="date" name="experiences[__INDEX__][end_date]">
                                 </div>
+
                                 <div class="form-group full-width">
                                     <label class="check-label">
                                         <input type="checkbox" name="experiences[__INDEX__][is_current]" value="1">
                                         I currently work here
                                     </label>
                                 </div>
+
                                 <div class="form-group full-width">
                                     <label class="field-label">Description</label>
-                                    <textarea name="experiences[__INDEX__][description]" placeholder="Describe your work"></textarea>
+                                    <textarea name="experiences[__INDEX__][description]"
+                                              placeholder="Describe your responsibilities and achievements"></textarea>
                                 </div>
                             </div>
+
                             <button type="button" class="button button-secondary remove-item">Remove experience</button>
                         </div>
                     </template>
@@ -1078,25 +1260,9 @@
 
                     {{-- SOCIAL LINKS --}}
                     <h2 class="section-heading"><span class="section-icon">07</span> Social Links</h2>
-                    <p class="section-description">Add links where visitors can find you online.</p>
+                    <p class="section-description">Add links where visitors can find you online. This section is optional.</p>
 
-                    <div id="social-links-list">
-                        <div class="repeat-item" data-item>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label class="field-label">Platform</label>
-                                    <input type="text" name="social_links[0][platform]" maxlength="255"
-                                           placeholder="e.g. GitHub, LinkedIn">
-                                </div>
-                                <div class="form-group">
-                                    <label class="field-label">Profile URL</label>
-                                    <input type="text" name="social_links[0][url]" maxlength="255"
-                                           placeholder="https://...">
-                                </div>
-                            </div>
-                            <button type="button" class="button button-secondary remove-item">Remove link</button>
-                        </div>
-                    </div>
+                    <div id="social-links-list"></div>
                     <button type="button" class="button button-secondary add-item"
                             data-target="social-links-list" data-template="social-template">+ Add Social Link</button>
 
@@ -1105,13 +1271,17 @@
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label class="field-label">Platform</label>
-                                    <input type="text" name="social_links[__INDEX__][platform]" maxlength="255" placeholder="e.g. GitHub">
+                                    <input type="text" name="social_links[__INDEX__][platform]"
+                                           maxlength="255" placeholder="e.g. GitHub, LinkedIn">
                                 </div>
+
                                 <div class="form-group">
                                     <label class="field-label">Profile URL</label>
-                                    <input type="text" name="social_links[__INDEX__][url]" maxlength="255" placeholder="https://...">
+                                    <input type="url" name="social_links[__INDEX__][url]"
+                                           maxlength="2048" placeholder="https://...">
                                 </div>
                             </div>
+
                             <button type="button" class="button button-secondary remove-item">Remove link</button>
                         </div>
                     </template>
@@ -1128,6 +1298,7 @@
                             <div class="template-option">
                                 <input type="radio" id="simple" name="template" value="simple"
                                     {{ old('template', 'simple') === 'simple' ? 'checked' : '' }} required>
+
                                 <label class="template-card" for="simple">
                                     <div class="preview-window">
                                         <div class="preview-browser"><span></span><span></span><span></span></div>
@@ -1152,6 +1323,7 @@
                             <div class="template-option">
                                 <input type="radio" id="modern" name="template" value="modern"
                                     {{ old('template') === 'modern' ? 'checked' : '' }} required>
+
                                 <label class="template-card" for="modern">
                                     <div class="preview-window">
                                         <div class="preview-browser"><span></span><span></span><span></span></div>
@@ -1179,6 +1351,7 @@
                             <div class="template-option">
                                 <input type="radio" id="creative" name="template" value="creative"
                                     {{ old('template') === 'creative' ? 'checked' : '' }} required>
+
                                 <label class="template-card" for="creative">
                                     <div class="preview-window">
                                         <div class="preview-browser"><span></span><span></span><span></span></div>
@@ -1203,12 +1376,13 @@
                             </div>
 
                         </div>
+
                         @error('template') <div class="error">{{ $message }}</div> @enderror
                     </div>
 
                     <div class="buttons">
                         <a href="{{ route('portfolios.index') }}" class="button button-secondary">Cancel</a>
-                        <button type="submit" class="button">Create Portfolio <span aria-hidden="true">→</span></button>
+                        <button type="submit" class="button">Create Portfolio</button>
                     </div>
                 </form>
             </div>
@@ -1220,99 +1394,179 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const counters = {
-        'education-list': 1,
-        'skills-list': 1,
-        'projects-list': 1,
-        'experiences-list': 1,
-        'social-links-list': 1
-    };
+    const form = document.getElementById('portfolio-form');
 
+    if (!form) return;
+
+    let firstInvalidField = null;
+
+    function markInvalid(field, message) {
+        field.setAttribute('aria-invalid', 'true');
+
+        let error = field.parentElement.querySelector('.js-validation-error');
+
+        if (!error) {
+            error = document.createElement('div');
+            error.className = 'error js-validation-error';
+            error.setAttribute('role', 'alert');
+            field.insertAdjacentElement('afterend', error);
+        }
+
+        error.textContent = message;
+
+        if (!firstInvalidField) {
+            firstInvalidField = field;
+        }
+    }
+
+    function clearInvalid(field) {
+        field.removeAttribute('aria-invalid');
+
+        const error = field.parentElement.querySelector('.js-validation-error');
+
+        if (error) {
+            error.remove();
+        }
+    }
+
+    // Add Education, Skills, Projects, Work Experience, Social Links
     document.querySelectorAll('.add-item').forEach(function (button) {
         button.addEventListener('click', function () {
-            const list = document.getElementById(button.dataset.target);
+            const target = document.getElementById(button.dataset.target);
             const template = document.getElementById(button.dataset.template);
-            if (!list || !template) return;
 
-            const index = counters[button.dataset.target]++;
+            if (!target || !template) return;
+
+            const index = target.querySelectorAll('[data-item]').length;
             const html = template.innerHTML.replaceAll('__INDEX__', index);
-            list.insertAdjacentHTML('beforeend', html);
+
+            target.insertAdjacentHTML('beforeend', html);
+
+            const newItem = target.lastElementChild;
+            const firstInput = newItem.querySelector('input:not([type="checkbox"]), textarea');
+
+            if (firstInput) {
+                firstInput.focus();
+            }
         });
     });
 
-    document.addEventListener('click', function (event) {
+    // Remove optional sections
+    form.addEventListener('click', function (event) {
         const button = event.target.closest('.remove-item');
-        if (!button) return;
 
-        const item = button.closest('[data-item]');
-        const list = item ? item.parentElement : null;
+        if (button) {
+            const item = button.closest('[data-item]');
 
-        if (item && list) {
-            // Keep at least one editable row per section.
-            if (list.querySelectorAll('[data-item]').length > 1) {
-                item.remove();
-            } else {
-                item.querySelectorAll('input').forEach(function (input) {
-                    if (input.type === 'checkbox') {
-                        input.checked = false;
-                    } else {
-                        input.value = '';
-                    }
-                });
-                item.querySelectorAll('textarea').forEach(function (textarea) {
-                    textarea.value = '';
-                });
-            }
+            if (item) item.remove();
         }
     });
 
-    const form = document.getElementById('portfolio-form');
+    // Full Name: letters and common name punctuation only
+    const fullName = document.getElementById('full_name');
 
-    if (form) {
-        form.addEventListener('submit', function () {
-            const sectionIds = [
-                'education-list',
-                'skills-list',
-                'projects-list',
-                'experiences-list',
-                'social-links-list'
-            ];
-
-            sectionIds.forEach(function (id) {
-                const list = document.getElementById(id);
-                if (!list) return;
-
-                list.querySelectorAll('[data-item]').forEach(function (item) {
-                    const fields = Array.from(
-                        item.querySelectorAll('input:not([type="checkbox"]), textarea')
-                    );
-
-                    const hasContent = fields.some(function (field) {
-                        return field.value.trim() !== '';
-                    });
-
-                    if (!hasContent) item.remove();
-                });
-            });
+    if (fullName) {
+        fullName.addEventListener('input', function () {
+            if (fullName.validity.valid && fullName.value.trim()) {
+                clearInvalid(fullName);
+            }
         });
     }
 
-    // If the user marks an experience as current, clear its end date.
-    document.addEventListener('change', function (event) {
-        const input = event.target;
+    // Phone: numbers and common phone separators only
+    const phone = document.getElementById('phone');
 
-        if (input.matches('input[type="checkbox"][name$="[is_current]"]') && input.checked) {
-            const item = input.closest('[data-item]');
-            const endDate = item ? item.querySelector('input[name$="[end_date]"]') : null;
-            if (endDate) endDate.value = '';
-        }
+    if (phone) {
+        phone.addEventListener('input', function () {
+            if (phone.validity.valid) {
+                clearInvalid(phone);
+            }
+        });
+    }
 
-        if (input.matches('input[type="checkbox"][name$="[is_present]"]') && input.checked) {
-            const item = input.closest('[data-item]');
-            const endYear = item ? item.querySelector('input[name$="[end_year]"]') : null;
-            if (endYear) endYear.value = '';
-        }
+    // Clear field errors when corrected
+    form.querySelectorAll('input, textarea, select').forEach(function (field) {
+        field.addEventListener('input', function () {
+            if (field.validity.valid && field.value.trim()) {
+                clearInvalid(field);
+            }
+        });
+
+        field.addEventListener('change', function () {
+            if (field.validity.valid && field.value.trim()) {
+                clearInvalid(field);
+            }
+        });
     });
+
+    // Mark browser validation errors and scroll to the first invalid field
+    form.addEventListener('invalid', function (event) {
+        const field = event.target;
+
+        let message = 'Please complete this field correctly.';
+
+        if (field.validity.valueMissing) {
+            message = 'This field is required.';
+        } else if (field.validity.typeMismatch) {
+            message = 'Please enter a valid value.';
+        } else if (field.validity.patternMismatch) {
+            message = field.title || 'Please check the format.';
+        }
+
+        markInvalid(field, message);
+
+        if (!firstInvalidField) {
+            firstInvalidField = field;
+        }
+
+        setTimeout(function () {
+            if (firstInvalidField) {
+                firstInvalidField.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                firstInvalidField.focus({ preventScroll: true });
+            }
+        }, 100);
+    }, true);
+
+    // Prevent empty optional rows from being submitted
+    form.addEventListener('submit', function () {
+        form.querySelectorAll('[data-item]').forEach(function (item) {
+            const fields = Array.from(
+                item.querySelectorAll('input:not([type="checkbox"]):not([type="hidden"]), textarea, select')
+            );
+
+            const hasContent = fields.some(function (field) {
+                return field.value.trim() !== '';
+            });
+
+            if (!hasContent) {
+                item.remove();
+            }
+        });
+    });
+
+    // Existing Laravel validation errors
+    const serverErrors = form.querySelector('.error-summary');
+
+    if (serverErrors) {
+        const firstError = form.querySelector('.form-group .error:not(.js-validation-error)');
+
+        if (firstError) {
+            const group = firstError.closest('.form-group');
+            const field = group ? group.querySelector('input, textarea, select') : null;
+
+            if (field) {
+                field.setAttribute('aria-invalid', 'true');
+
+                field.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }
+        }
+    }
 });
 </script>
 

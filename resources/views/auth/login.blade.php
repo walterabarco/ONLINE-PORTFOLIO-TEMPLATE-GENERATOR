@@ -581,9 +581,6 @@
             <span>Portfolio Builder</span>
         </a>
 
-        <a class="top-link" href="{{ route('register') }}">
-            Create an account ↗
-        </a>
     </header>
 
     <main class="page">
@@ -734,7 +731,7 @@
                     </div>
 
                     <button class="submit-button" type="submit">
-                        Log In <span aria-hidden="true">→</span>
+                        Log In
                     </button>
 
                     <p class="signup-prompt">

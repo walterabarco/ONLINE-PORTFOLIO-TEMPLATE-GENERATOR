@@ -7,19 +7,15 @@
     <meta name="theme-color" content="#f4faf9">
     <title>Edit Portfolio | Portfolio Studio</title>
 
-    @php
-        $educationItems = old('educations', $portfolio->educations->toArray());
-        $skillItems = old('skills', $portfolio->skills->toArray());
-        $projectItems = old('projects', $portfolio->projects->toArray());
-        $experienceItems = old('experiences', $portfolio->experiences->toArray());
-        $socialItems = old('social_links', $portfolio->socialLinks->toArray());
+    
+@php
+    $educationItems = old('educations', $portfolio->educations->toArray());
+    $skillItems = old('skills', $portfolio->skills->toArray());
+    $projectItems = old('projects', $portfolio->projects->toArray());
+    $experienceItems = old('experiences', $portfolio->experiences->toArray());
+    $socialItems = old('social_links', $portfolio->socialLinks->toArray());
+@endphp
 
-        $educationItems = count($educationItems) ? $educationItems : [[]];
-        $skillItems = count($skillItems) ? $skillItems : [[]];
-        $projectItems = count($projectItems) ? $projectItems : [[]];
-        $experienceItems = count($experienceItems) ? $experienceItems : [[]];
-        $socialItems = count($socialItems) ? $socialItems : [[]];
-    @endphp
 
     <style>
         :root {
@@ -183,6 +179,7 @@
         input[type="number"],
         input[type="date"],
         input[type="file"],
+        input[type="url"],
         textarea {
             display: block;
             width: 100%;
@@ -1202,18 +1199,19 @@
             <div class="buttons">
                 <a href="{{ route('portfolios.preview', $portfolio) }}"
                    class="button button-preview" target="_blank" rel="noopener noreferrer">
-                    Preview Portfolio ↗
+                    Preview Portfolio 
                 </a>
 
                 <a href="{{ route('portfolios.index') }}" class="button button-secondary">Cancel</a>
 
-                <button type="submit" form="portfolio-form" class="button">Save Changes →</button>
+                <button type="submit" form="portfolio-form" class="button">Save Changes</button>
             </div>
         </div>
     </section>
 </main>
 
 <footer class="footer">Portfolio Studio · Your story, your style.</footer>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -1229,7 +1227,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     sectionIds.forEach(function (id) {
         const list = document.getElementById(id);
-        counters[id] = list ? list.querySelectorAll('[data-item]').length : 0;
+        counters[id] = list
+            ? list.querySelectorAll('[data-item]').length
+            : 0;
     });
 
     document.querySelectorAll('.add-item').forEach(function (button) {
@@ -1243,6 +1243,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const html = template.innerHTML.replaceAll('__INDEX__', index);
 
             list.insertAdjacentHTML('beforeend', html);
+
+            const newItem = list.lastElementChild;
+            const firstInput = newItem.querySelector(
+                'input:not([type="checkbox"]), textarea'
+            );
+
+            if (firstInput) firstInput.focus();
         });
     });
 
@@ -1251,46 +1258,64 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!button) return;
 
         const item = button.closest('[data-item]');
-        if (!item) return;
-
-        const list = item.parentElement;
-        const items = list.querySelectorAll('[data-item]');
-
-        if (items.length > 1) {
-            item.remove();
-            return;
-        }
-
-        item.querySelectorAll('input').forEach(function (input) {
-            if (input.type === 'checkbox') {
-                input.checked = false;
-            } else {
-                input.value = '';
-            }
-        });
-
-        item.querySelectorAll('textarea').forEach(function (textarea) {
-            textarea.value = '';
-        });
+        if (item) item.remove();
     });
 
     document.addEventListener('change', function (event) {
         const input = event.target;
 
-        if (input.matches('input[type="checkbox"][name$="[is_current]"]') && input.checked) {
+        if (
+            input.matches('input[type="checkbox"][name$="[is_current]"]') &&
+            input.checked
+        ) {
             const item = input.closest('[data-item]');
-            const endDate = item ? item.querySelector('input[name$="[end_date]"]') : null;
+            const endDate = item
+                ? item.querySelector('input[name$="[end_date]"]')
+                : null;
+
             if (endDate) endDate.value = '';
         }
 
-        if (input.matches('input[type="checkbox"][name$="[is_present]"]') && input.checked) {
+        if (
+            input.matches('input[type="checkbox"][name$="[is_present]"]') &&
+            input.checked
+        ) {
             const item = input.closest('[data-item]');
-            const endYear = item ? item.querySelector('input[name$="[end_year]"]') : null;
+            const endYear = item
+                ? item.querySelector('input[name$="[end_year]"]')
+                : null;
+
             if (endYear) endYear.value = '';
         }
     });
+
+    const form = document.getElementById('portfolio-form');
+
+    if (form) {
+        form.addEventListener('submit', function () {
+            sectionIds.forEach(function (id) {
+                const list = document.getElementById(id);
+                if (!list) return;
+
+                list.querySelectorAll('[data-item]').forEach(function (item) {
+                    const fields = Array.from(
+                        item.querySelectorAll(
+                            'input:not([type="checkbox"]):not([type="hidden"]), textarea, select'
+                        )
+                    );
+
+                    const hasContent = fields.some(function (field) {
+                        return field.value.trim() !== '';
+                    });
+
+                    if (!hasContent) item.remove();
+                });
+            });
+        });
+    }
 });
 </script>
+
 
 </body>
 </html>

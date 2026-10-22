@@ -780,20 +780,22 @@
     </nav>
 
     <main class="container">
-        <header class="heading">
-            <div>
-                <div class="eyebrow">Your workspace</div>
-                <h1>My Portfolios</h1>
-                <p class="heading-description">
-                    Create, customize, and manage your personal portfolio websites.
-                </p>
-            </div>
+        
+<header class="heading">
+    <div>
+        <div class="eyebrow">Your workspace</div>
+        <h1>My Portfolios</h1>
+        <p class="heading-description">
+            Create, customize, and manage your personal portfolio websites.
+        </p>
+    </div>
 
-            <a href="{{ route('portfolios.create') }}" class="button">
-                <span class="button-icon" aria-hidden="true">+</span>
-                Create Portfolio
-            </a>
-        </header>
+    <a href="{{ route('portfolios.create') }}" class="button">
+        <span class="button-icon" aria-hidden="true">+</span>
+        Create Portfolio
+    </a>
+</header>
+
 
         @if (session('success'))
             <div class="alert" role="status">
@@ -933,9 +935,7 @@
                         and build a place to showcase your work.
                     </p>
 
-                    <a href="{{ route('portfolios.create') }}" class="button">
-                        Create My First Portfolio
-                    </a>
+                    
                 </section>
             @endif
         </section>
